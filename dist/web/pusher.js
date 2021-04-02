@@ -1602,6 +1602,10 @@ var transport_connection_TransportConnection = (function (_super) {
         if (this.socket || this.state !== 'initialized') {
             return false;
         }
+        
+        // Obligo a que se use ws: MODIFICACIÓN JORGE 01/04/2021
+        this.options.useTLS = false;
+      
         var url = this.hooks.urls.getInitial(this.key, this.options);
         try {
             this.socket = this.hooks.getSocket(url, this.options);
